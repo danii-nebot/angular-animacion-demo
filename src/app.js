@@ -1,6 +1,6 @@
 var app = angular.module('app', []).
 
-  //definimos las rutas de la 'app'
+  // definimos las rutas de la 'app'
   config(['$routeProvider', function($routes) {
 
   $routes.
@@ -19,33 +19,33 @@ var app = angular.module('app', []).
 }]);
 
 
-//Definimos animación enter
+// Definimos animación enter
 app.animation('animate-enter', ['$rootScope', function($rootScope) {
   return {
     setup : function(element) {
 
-      //margin con respecto al tamaño de la ventana del navegador
+      // margin con respecto al tamaño de la ventana del navegador
       var margin = Math.max(100,($(window).width()-880)/2);
 
-      //utilizamos rootScope para discernir qué animacion haremos
+      // utilizamos rootScope para discernir qué animacion haremos
       var px = ($rootScope.myAnimation==='fade-right')?'-'+margin+'px':margin+'px';
 
       jQuery(element).css({ 'opacity': 0, 'margin-left': px });
 
     },
     start : function(element, done) {
-      //lanzar animacion
+      // lanzar animacion
       jQuery(element).animate({
         'opacity' : 1, 'margin-left': 0
       }, function() {
-        //llamar a done() cuando la animación termina
+        // llamar a done() cuando la animación termina
         done();
       });
     }
   };
 }]);
 
-//Definimos animación hide
+// Definimos animación hide
 app.animation('animate-hide', ['$rootScope', function($rootScope) {
   return {
     setup : function(element) {
@@ -55,17 +55,17 @@ app.animation('animate-hide', ['$rootScope', function($rootScope) {
     },
     start : function(element, done) {
 
-      //margin con respecto al tamaño de la ventana del navegador
+      // margin con respecto al tamaño de la ventana del navegador
       var margin = Math.max(100,($(window).width()-880)/2);
 
-      //utilizamos rootScope para discernir qué animacion haremos
+      // utilizamos rootScope para discernir qué animacion haremos
       var px = ($rootScope.myAnimation==='fade-right')?margin+'px':'-'+margin+'px';
 
-      //lanzar animacion
+      // lanzar animacion
       jQuery(element).animate({
         'opacity' : 0, 'margin-left': px
       }, function() {
-        //llamar a done() cuando la animación termina
+        // llamar a done() cuando la animación termina
         done();
       });
     }

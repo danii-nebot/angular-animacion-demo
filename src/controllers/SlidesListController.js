@@ -1,6 +1,6 @@
 function SlidessListController($scope, SlidesModel, $routeParams, $location, $timeout, $rootScope) {
 
-  //id=1 por defecto
+  // id=1 por defecto
   $scope.id = $routeParams.slideId || 1;
   $scope.slides = SlidesModel.getSlides();
 
@@ -15,13 +15,14 @@ function SlidessListController($scope, SlidesModel, $routeParams, $location, $ti
 
   $scope.hide=false;
 
-  //http://stackoverflow.com/questions/11952579/watch-multiple-scope-attributes-in-angularjs 
+  // watch de más de una variable via stackoverflow:
+  // http://stackoverflow.com/questions/11952579/watch-multiple-scope-attributes-in-angularjs 
   $scope.$watch('[slide.title, slide.content]', function(newValue, oldValue) {
 
-    //creamos contenido de la slide contatenándo título y content
+    // creamos contenido de la slide contatenándo título y content
     var markdownContent = '#'+$scope.slide.title+'\n\n\n'+$scope.slide.content;
 
-    //convertir a html
+    // convertir a html
     var showdown = new Showdown.converter();
     $scope.prettyContent = showdown.makeHtml(markdownContent);
   }, true);
@@ -60,12 +61,12 @@ function SlidessListController($scope, SlidesModel, $routeParams, $location, $ti
 
   animateSwitchSlide = function (id) {
 
-    //utilizamos rootScope para discernir qué animacion haremos
+    // utilizamos rootScope para discernir qué animacion haremos
     $rootScope.myAnimation = (id > $scope.slide.id)?'fade-left':'fade-right';
 
     $scope.hide=true;
 
-    //transition tras timeout para dar timepo a la animación hide a finalizar
+    // transition tras timeout para dar timepo a la animación hide a finalizar
     $timeout( function(){ $location.path('/slides/'+id); }, 550 );
   };
 
