@@ -59,7 +59,7 @@ app.animation('animate-hide', ['$rootScope', function($rootScope) {
       var margin = Math.max(100,($(window).width()-880)/2);
 
       //utilizamos rootScope para discernir qué animacion haremos
-      var px = ($rootScope.myAnimation==='fade-right')?'-'+margin+'px':margin+'px';
+      var px = ($rootScope.myAnimation==='fade-right')?margin+'px':'-'+margin+'px';
 
       //lanzar animacion
       jQuery(element).animate({

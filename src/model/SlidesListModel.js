@@ -39,7 +39,7 @@ app.factory('SlidesModel', function () {
   SlidesModel.getSlide = function(index) {
 
     if((index>0)&&(index<=SlidesModel.slidesList.length))
-      return SlidesModel.slidesList[id-1];
+      return SlidesModel.slidesList[index-1];
     else
       return SlidesModel.slidesList[0];
   };
